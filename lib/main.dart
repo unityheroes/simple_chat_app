@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_chat_app/firebase_options.dart';
+import 'package:simple_chat_app/screens/chat_screen.dart';
 import 'package:simple_chat_app/screens/login_screen.dart';
 import 'package:simple_chat_app/screens/register_screen.dart';
 
@@ -30,7 +31,8 @@ class SimpleChatApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         LoginScreen.id: (context) => const LoginScreen(),
-        RegisterScreen.id: (context) => const RegisterScreen()
+        RegisterScreen.id: (context) => const RegisterScreen(),
+        ChatPage.id: (context) => const ChatPage()
       },
       initialRoute: 'LoginScreen',
     );
