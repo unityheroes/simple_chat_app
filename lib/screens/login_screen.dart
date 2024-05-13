@@ -1,30 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:simple_chat_app/constants.dart';
 import 'package:simple_chat_app/screens/register_screen.dart';
+
 import 'package:simple_chat_app/widgets/custom_button.dart';
 import 'package:simple_chat_app/widgets/custom_text_field.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
+  static String id = "LoginScreen";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff274460),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      backgroundColor: kBackgroundColor,
+      body: ListView(
         children: [
-          const Spacer(
-            flex: 1,
+          const SizedBox(
+            height: 64,
           ),
           const Center(
-              child: Image(image: AssetImage('assets/images/scholar.png'))),
-          const Text(
-            "Simple Chat App",
-            style: TextStyle(
-                color: Colors.white, fontSize: 24, fontFamily: 'Pacifico'),
+              child: Image(
+            image: AssetImage('assets/images/scholar.png'),
+            height: 128,
+          )),
+          const Center(
+            child: Text(
+              "Simple Chat App",
+              style: TextStyle(
+                  color: Colors.white, fontSize: 24, fontFamily: 'Pacifico'),
+            ),
           ),
-          const Spacer(
-            flex: 2,
+          const SizedBox(
+            height: 128,
           ),
           const Row(
             children: [
@@ -33,7 +40,6 @@ class LoginScreen extends StatelessWidget {
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,
-                  fontFamily: 'Pacifico',
                 ),
               ),
             ],
@@ -59,22 +65,12 @@ class LoginScreen extends StatelessWidget {
                   style: TextStyle(color: Colors.white)),
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return const RegisterScreen();
-                      },
-                    ),
-                  );
+                  Navigator.pushNamed(context, RegisterScreen.id);
                 },
                 child: const Text("Sign Up",
                     style: TextStyle(color: Colors.yellowAccent, fontSize: 16)),
               ),
             ],
-          ),
-          const Spacer(
-            flex: 3,
           ),
         ],
       ),
