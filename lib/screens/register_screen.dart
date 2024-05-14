@@ -79,6 +79,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               CustomFormTextField(
                 textHint: "Password",
                 onChange: (data) => password = data,
+                obsecureText: true,
               ),
               const SizedBox(
                 height: 24,
@@ -90,11 +91,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     setState(() {});
                     try {
                       await registerNewUser();
+                      // ignore: use_build_context_synchronously
                       showSnackBar(context, "Success");
-                      Navigator.popAndPushNamed(context, ChatPage.id);
+                      // ignore: use_build_context_synchronously
+                      Navigator.popAndPushNamed(context, ChatPage.id,
+                          arguments: email);
                     } on FirebaseAuthException catch (e) {
+                      // ignore: use_build_context_synchronously
                       showSnackBar(context, e.message.toString());
                     } catch (e) {
+                      // ignore: use_build_context_synchronously
                       showSnackBar(context, "Oops There Missing value ");
                     }
                   }

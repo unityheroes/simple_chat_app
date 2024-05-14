@@ -32,7 +32,7 @@ class SimpleChatApp extends StatelessWidget {
       routes: {
         LoginScreen.id: (context) => const LoginScreen(),
         RegisterScreen.id: (context) => const RegisterScreen(),
-        ChatPage.id: (context) => const ChatPage()
+        ChatPage.id: (context) => ChatPage()
       },
       initialRoute: 'LoginScreen',
     );

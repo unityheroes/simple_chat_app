@@ -5,7 +5,6 @@ import 'package:simple_chat_app/constants.dart';
 import 'package:simple_chat_app/helpers/show_snack_bar.dart';
 import 'package:simple_chat_app/screens/chat_screen.dart';
 import 'package:simple_chat_app/screens/register_screen.dart';
-
 import 'package:simple_chat_app/widgets/custom_button.dart';
 import 'package:simple_chat_app/widgets/custom_form_text_field.dart';
 
@@ -80,6 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
               CustomFormTextField(
                 textHint: "Password",
                 onChange: (data) => password = data,
+                obsecureText: true,
               ),
               const SizedBox(
                 height: 24,
@@ -91,11 +91,16 @@ class _LoginScreenState extends State<LoginScreen> {
                     setState(() {});
                     try {
                       await loginUser();
+                      // ignore: use_build_context_synchronously
                       showSnackBar(context, "Success");
-                      Navigator.popAndPushNamed(context, ChatPage.id);
+                      // ignore: use_build_context_synchronously
+                      Navigator.popAndPushNamed(context, ChatPage.id,
+                          arguments: email);
                     } on FirebaseAuthException catch (e) {
+                      // ignore: use_build_context_synchronously
                       showSnackBar(context, e.message.toString());
                     } catch (e) {
+                      // ignore: use_build_context_synchronously
                       showSnackBar(context, "Oops There Missing value ");
                     }
                   }
